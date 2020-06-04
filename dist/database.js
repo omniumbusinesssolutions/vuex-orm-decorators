@@ -2,7 +2,11 @@ import VuexORM from '@vuex-orm/core';
 var ORMDatabase = /** @class */ (function () {
     function ORMDatabase() {
     }
-    ORMDatabase.install = function () {
+    ORMDatabase.install = function (options) {
+        var plugins = options.plugins;
+        if (plugins && plugins.length) {
+            plugins.forEach(function (plugin) { return VuexORM.use(plugin); });
+        }
         return VuexORM.install(ORMDatabase._ormDatabase);
     };
     ORMDatabase.registerEntity = function (model) {
