@@ -1,4 +1,4 @@
-import VuexORM, { Model, Database } from '@vuex-orm/core';
+import VuexORM, { Model } from '@vuex-orm/core';
 import { Plugin } from 'vuex';
 
 export class ORMDatabase {
