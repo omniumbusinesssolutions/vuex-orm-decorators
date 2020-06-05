@@ -93,6 +93,9 @@ export function BelongsToField(parent: typeof Model | string, foreignKey: string
 }
 
 export function HasManyByField(parent: typeof Model | string, foreignKey: string, ownerKey?: string) {
+    console.log('parent :>> ', parent);
+    console.log('foreignKey :>> ', foreignKey);
+    console.log('ownerKey :>> ', ownerKey);
     return Field(Model.hasManyBy(parent, foreignKey, ownerKey));
 }
 

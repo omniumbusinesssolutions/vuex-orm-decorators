@@ -79,6 +79,9 @@ export function BelongsToField(parent, foreignKey, ownerKey) {
     return Field(Model.belongsTo(parent, foreignKey, ownerKey));
 }
 export function HasManyByField(parent, foreignKey, ownerKey) {
+    console.log('parent :>> ', parent);
+    console.log('foreignKey :>> ', foreignKey);
+    console.log('ownerKey :>> ', ownerKey);
     return Field(Model.hasManyBy(parent, foreignKey, ownerKey));
 }
 export function HasManyThroughField(related, through, firstKey, secondKey, localKey, secondLocalKey) {
