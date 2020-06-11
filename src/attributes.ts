@@ -6,9 +6,14 @@ import Mutator from '@vuex-orm/core/lib/attributes/contracts/Mutator';
 /**
  * Sets the property as the primary key of the model
  */
-export function PrimaryKey() {
+export function PrimaryKey(...composite: string[]) {
     return (target: Object, propertyName: string | symbol): void => {
-        (target.constructor as any).primaryKey = propertyName;
+        if (composite.length) {
+            let compositeKey = [propertyName].concat(composite);
+            (target.constructor as any).primaryKey = compositeKey;
+        } else {
+            (target.constructor as any).primaryKey = propertyName;
+        }
     };
 }
 

@@ -3,7 +3,7 @@ import Mutator from '@vuex-orm/core/lib/attributes/contracts/Mutator';
 /**
  * Sets the property as the primary key of the model
  */
-export declare function PrimaryKey(): (target: Object, propertyName: string | symbol) => void;
+export declare function PrimaryKey(...composite: string[]): (target: Object, propertyName: string | symbol) => void;
 /**
  * Adds the property as a model field
  * @param fieldType The field attribute
