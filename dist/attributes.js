@@ -68,6 +68,9 @@ export function BooleanField(value, mutator) {
  * @param localKey The local key on the parent model
  */
 export function HasManyField(related, foreignKey, localKey) {
+    console.log('VuexORMDecorators: HasManyField: related', related);
+    console.log('VuexORMDecorators: HasManyField: foreignKey', foreignKey);
+    console.log('VuexORMDecorators: HasManyField: localKey?', localKey);
     return Field(Model.hasMany(related, foreignKey, localKey));
 }
 /**
@@ -77,6 +80,9 @@ export function HasManyField(related, foreignKey, localKey) {
  * @param localKey The local key on the parent model
  */
 export function HasOneField(related, foreignKey, localKey) {
+    console.log('VuexORMDecorators: HasOneField: related', related);
+    console.log('VuexORMDecorators: HasOneField: foreignKey', foreignKey);
+    console.log('VuexORMDecorators: HasOneField: localKey?', localKey);
     return Field(Model.hasOne(related, foreignKey, localKey));
 }
 /**
@@ -86,33 +92,72 @@ export function HasOneField(related, foreignKey, localKey) {
  * @param ownerKey The key on the parent model
  */
 export function BelongsToField(parent, foreignKey, ownerKey) {
+    console.log('VuexORMDecorators: BelongsToField: parent', parent);
+    console.log('VuexORMDecorators: BelongsToField: foreignKey', foreignKey);
+    console.log('VuexORMDecorators: BelongsToField: ownerKey?', ownerKey);
     return Field(Model.belongsTo(parent, foreignKey, ownerKey));
 }
 export function HasManyByField(parent, foreignKey, ownerKey) {
-    console.log('parent :>> ', parent);
-    console.log('foreignKey :>> ', foreignKey);
-    console.log('ownerKey :>> ', ownerKey);
+    console.log('VuexORMDecorators: HasManyByField: parent', parent);
+    console.log('VuexORMDecorators: HasManyByField: foreignKey', foreignKey);
+    console.log('VuexORMDecorators: HasManyByField: ownerKey?', ownerKey);
     return Field(Model.hasManyBy(parent, foreignKey, ownerKey));
 }
 export function HasManyThroughField(related, through, firstKey, secondKey, localKey, secondLocalKey) {
+    console.log('VuexORMDecorators: HasManyThroughField: related', related);
+    console.log('VuexORMDecorators: HasManyThroughField: through', through);
+    console.log('VuexORMDecorators: HasManyThroughField: firstKey', firstKey);
+    console.log('VuexORMDecorators: HasManyThroughField: secondKey', secondKey);
+    console.log('VuexORMDecorators: HasManyThroughField: localKey?', localKey);
+    console.log('VuexORMDecorators: HasManyThroughField: secondLocalKey?', secondLocalKey);
     return Field(Model.hasManyThrough(related, through, firstKey, secondKey, localKey, secondLocalKey));
 }
 export function BelongsToManyField(related, pivot, foreignPivotKey, relatedPivotKey, parentKey, relatedKey) {
+    console.log('VuexORMDecorators: BelongsToManyField: related', related);
+    console.log('VuexORMDecorators: BelongsToManyField: pivot', pivot);
+    console.log('VuexORMDecorators: BelongsToManyField: foreignPivotKey', foreignPivotKey);
+    console.log('VuexORMDecorators: BelongsToManyField: relatedPivotKey', relatedPivotKey);
+    console.log('VuexORMDecorators: BelongsToManyField: parentKey?', parentKey);
+    console.log('VuexORMDecorators: BelongsToManyField: relatedKey?', relatedKey);
     return Field(Model.belongsToMany(related, pivot, foreignPivotKey, relatedPivotKey, parentKey, relatedKey));
 }
 export function MorphToField(id, type) {
+    console.log('VuexORMDecorators: MorphToField: id', id);
+    console.log('VuexORMDecorators: MorphToField: type', type);
     return Field(Model.morphTo(id, type));
 }
 export function MorphOneField(related, id, type, localKey) {
+    console.log('VuexORMDecorators: MorphOneField: related', related);
+    console.log('VuexORMDecorators: MorphOneField: id', id);
+    console.log('VuexORMDecorators: MorphOneField: type', type);
+    console.log('VuexORMDecorators: MorphOneField: localKey?', localKey);
     return Field(Model.morphOne(related, id, type, localKey));
 }
 export function MorphManyField(related, id, type, localKey) {
+    console.log('VuexORMDecorators: MorphManyField: related', related);
+    console.log('VuexORMDecorators: MorphManyField: id', id);
+    console.log('VuexORMDecorators: MorphManyField: type', type);
+    console.log('VuexORMDecorators: MorphManyField: localKey?', localKey);
     return Field(Model.morphMany(related, id, type, localKey));
 }
 export function MorphToManyField(related, pivot, relatedId, id, type, parentKey, relatedKey) {
+    console.log('VuexORMDecorators: MorphToManyField: related', related);
+    console.log('VuexORMDecorators: MorphToManyField: pivot', pivot);
+    console.log('VuexORMDecorators: MorphToManyField: relatedId', relatedId);
+    console.log('VuexORMDecorators: MorphToManyField: id', id);
+    console.log('VuexORMDecorators: MorphToManyField: type', type);
+    console.log('VuexORMDecorators: MorphToManyField: parentKey?', parentKey);
+    console.log('VuexORMDecorators: MorphToManyField: relatedKey?', relatedKey);
     return Field(Model.morphToMany(related, pivot, relatedId, id, type, parentKey, relatedKey));
 }
 export function MorphedByManyField(related, pivot, relatedId, id, type, parentKey, relatedKey) {
+    console.log('VuexORMDecorators: MorphedByManyField: related', related);
+    console.log('VuexORMDecorators: MorphedByManyField: pivot', pivot);
+    console.log('VuexORMDecorators: MorphedByManyField: relatedId', relatedId);
+    console.log('VuexORMDecorators: MorphedByManyField: id', id);
+    console.log('VuexORMDecorators: MorphedByManyField: type', type);
+    console.log('VuexORMDecorators: MorphedByManyField: parentKey?', parentKey);
+    console.log('VuexORMDecorators: MorphedByManyField: relatedKey?', relatedKey);
     return Field(Model.morphedByMany(related, pivot, relatedId, id, type, parentKey, relatedKey));
 }
 //# sourceMappingURL=attributes.js.map
