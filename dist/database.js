@@ -1,24 +1,20 @@
 import VuexORM from '@vuex-orm/core';
-var ORMDatabase = /** @class */ (function () {
-    function ORMDatabase() {
+export class ORMDatabase {
+    static install(options) {
+        this._models.forEach(model => this._ormDatabase.register(model));
+        return VuexORM.install(ORMDatabase._ormDatabase, options);
     }
-    ORMDatabase.install = function (options) {
-        var plugins = options.plugins;
-        if (plugins && plugins.length) {
-            plugins.forEach(function (plugin) { return VuexORM.use(plugin); });
-        }
-        return VuexORM.install(ORMDatabase._ormDatabase);
-    };
-    ORMDatabase.registerEntity = function (model) {
-        if (this._installed.indexOf(model) !== -1) {
-            console.error("Unable to register entity " + model.name + ".  Entity already registered.");
+    static registerEntity(model) {
+        if (this._models.includes(model)) {
+            console.error(`Unable to register entity '${model.name}'. Entity '${model.name}' is already registered.`);
             return;
         }
-        ORMDatabase._ormDatabase.register(model);
-    };
-    ORMDatabase._ormDatabase = new VuexORM.Database();
-    ORMDatabase._installed = [];
-    return ORMDatabase;
-}());
-export { ORMDatabase };
+        this._models.push(model);
+    }
+    static models() {
+        return this._models;
+    }
+}
+ORMDatabase._ormDatabase = new VuexORM.Database();
+ORMDatabase._models = [];
 //# sourceMappingURL=database.js.map
