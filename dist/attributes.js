@@ -2,9 +2,15 @@ import { Model } from '@vuex-orm/core';
 /**
  * Sets the property as the primary key of the model
  */
-export function PrimaryKey() {
+export function PrimaryKey(...composite) {
     return (target, propertyName) => {
-        target.constructor.primaryKey = propertyName;
+        if (composite.length) {
+            let compositeKey = [propertyName].concat(composite);
+            target.constructor.primaryKey = compositeKey;
+        }
+        else {
+            target.constructor.primaryKey = propertyName;
+        }
     };
 }
 /**
